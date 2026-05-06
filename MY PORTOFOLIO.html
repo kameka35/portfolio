@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Outfit', sans-serif; }
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
+    html, body { height: 100%; margin: 0; }
+    .nav-link { transition: color 0.2s; }
+    .nav-link:hover { color: #22d3ee; }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .fade-in { animation: fadeIn 0.8s ease forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+    .skill-bar { transition: width 1s ease; }
+    .section { min-height: 100%; padding: 80px 24px; }
+    @media(min-width:768px) { .section { padding: 100px 48px; } }
+    .toast { animation: slideUp 0.4s ease; }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .cv-modal { animation: scaleIn 0.3s ease; }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full bg-[#0f172a] text-[#e2e8f0] overflow-x-hidden">
+  <div id="app" class="w-full h-full overflow-auto scroll-smooth">
+   <!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0f172a]/90 backdrop-blur-md border-b border-[#1e293b]">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+     <span class="text-xl font-bold text-[#22d3ee]" id="nav-name">ND</span>
+     <div class="hidden md:flex gap-8 text-sm font-medium">
+      <a href="#home" class="nav-link">Home</a> <a href="#about" class="nav-link">About</a> <a href="#skills" class="nav-link">Skills</a> <a href="#projects" class="nav-link">Projects</a> <a href="#cv" class="nav-link">CV</a> <a href="#contact" class="nav-link">Contact</a>
+     </div><button id="mobile-menu-btn" class="md:hidden text-[#e2e8f0]"><i data-lucide="menu"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col gap-3 text-sm">
+     <a href="#home" class="nav-link">Home</a> <a href="#about" class="nav-link">About</a> <a href="#skills" class="nav-link">Skills</a> <a href="#projects" class="nav-link">Projects</a> <a href="#cv" class="nav-link">CV</a> <a href="#contact" class="nav-link">Contact</a>
+    </div>
+   </nav><!-- Home -->
+   <section id="home" class="section flex items-center justify-center text-center">
+    <div class="fade-in">
+     <p class="text-[#22d3ee] text-sm font-medium tracking-widest uppercase mb-4">Welcome to my portfolio</p>
+     <h1 id="hero-name" class="text-5xl md:text-7xl font-800 mb-4">Ntivuguruzwa Douceur</h1>
+     <p id="hero-title" class="text-xl md:text-2xl text-[#94a3b8] font-light mb-8">Full Stack Developer</p>
+     <div class="flex gap-4 justify-center">
+      <a href="#projects" class="px-6 py-3 bg-[#22d3ee] text-[#0f172a] font-semibold rounded-lg hover:bg-[#06b6d4] transition">View Projects</a> <a href="#contact" class="px-6 py-3 border border-[#334155] rounded-lg hover:border-[#22d3ee] transition">Get in Touch</a>
+     </div>
+    </div>
+   </section><!-- About -->
+   <section id="about" class="section flex items-center">
+    <div class="max-w-4xl mx-auto w-full">
+     <h2 class="text-3xl font-bold mb-2">About Me</h2>
+     <div class="w-16 h-1 bg-[#22d3ee] mb-8 rounded"></div>
+     <p id="about-text" class="text-[#94a3b8] text-lg leading-relaxed max-w-2xl">I'm a passionate full stack developer with 5+ years of experience building web applications. I love creating elegant solutions to complex problems and am always eager to learn new technologies. When I'm not coding, you'll find me contributing to open-source projects or writing technical articles.</p>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+      <div class="text-center fade-in">
+       <p class="text-3xl font-bold text-[#22d3ee]">5+</p>
+       <p class="text-sm text-[#94a3b8]">Years Experience</p>
+      </div>
+      <div class="text-center fade-in">
+       <p class="text-3xl font-bold text-[#22d3ee]">30+</p>
+       <p class="text-sm text-[#94a3b8]">Projects Done</p>
+      </div>
+      <div class="text-center fade-in">
+       <p class="text-3xl font-bold text-[#22d3ee]">15+</p>
+       <p class="text-sm text-[#94a3b8]">Technologies</p>
+      </div>
+      <div class="text-center fade-in">
+       <p class="text-3xl font-bold text-[#22d3ee]">10+</p>
+       <p class="text-sm text-[#94a3b8]">Happy Clients</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills -->
+   <section id="skills" class="section flex items-center">
+    <div class="max-w-4xl mx-auto w-full">
+     <h2 class="text-3xl font-bold mb-2">Skills</h2>
+     <div class="w-16 h-1 bg-[#22d3ee] mb-8 rounded"></div>
+     <div class="grid md:grid-cols-2 gap-8">
+      <div>
+       <h3 class="font-semibold text-lg mb-4 text-[#22d3ee]">Frontend</h3>
+       <div class="space-y-4">
+        <div>
+         <div class="flex justify-between mb-1 text-sm"><span>HTML / CSS</span><span>95%</span>
+         </div>
+         <div class="h-2 bg-[#1e293b] rounded-full">
+          <div class="skill-bar h-2 bg-[#22d3ee] rounded-full" style="width:95%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1 text-sm"><span>JavaScript</span><span>90%</span>
+         </div>
+         <div class="h-2 bg-[#1e293b] rounded-full">
+          <div class="skill-bar h-2 bg-[#22d3ee] rounded-full" style="width:90%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1 text-sm"><span>React</span><span>88%</span>
+         </div>
+         <div class="h-2 bg-[#1e293b] rounded-full">
+          <div class="skill-bar h-2 bg-[#22d3ee] rounded-full" style="width:88%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1 text-sm"><span>Tailwind CSS</span><span>92%</span>
+         </div>
+         <div class="h-2 bg-[#1e293b] rounded-full">
+          <div class="skill-bar h-2 bg-[#22d3ee] rounded-full" style="width:92%"></div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div>
+       <h3 class="font-semibold text-lg mb-4 text-[#22d3ee]">Backend</h3>
+       <div class="space-y-4">
+        <div>
+         <div class="flex justify-between mb-1 text-sm"><span>Node.js</span><span>85%</span>
+         </div>
+         <div class="h-2 bg-[#1e293b] rounded-full">
+          <div class="skill-bar h-2 bg-[#22d3ee] rounded-full" style="width:85%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1 text-sm"><span>Python</span><span>80%</span>
+         </div>
+         <div class="h-2 bg-[#1e293b] rounded-full">
+          <div class="skill-bar h-2 bg-[#22d3ee] rounded-full" style="width:80%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1 text-sm"><span>PostgreSQL</span><span>82%</span>
+         </div>
+         <div class="h-2 bg-[#1e293b] rounded-full">
+          <div class="skill-bar h-2 bg-[#22d3ee] rounded-full" style="width:82%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1 text-sm"><span>REST APIs</span><span>90%</span>
+         </div>
+         <div class="h-2 bg-[#1e293b] rounded-full">
+          <div class="skill-bar h-2 bg-[#22d3ee] rounded-full" style="width:90%"></div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Projects -->
+   <section id="projects" class="section">
+    <div class="max-w-5xl mx-auto w-full">
+     <h2 class="text-3xl font-bold mb-2">Projects</h2>
+     <div class="w-16 h-1 bg-[#22d3ee] mb-8 rounded"></div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card-hover bg-[#1e293b] rounded-xl p-6 border border-[#334155]">
+       <div class="flex items-center gap-2 mb-3"><i data-lucide="shopping-cart" class="w-5 h-5 text-[#22d3ee]"></i>
+        <h3 class="font-semibold">E-Commerce Platform</h3>
+       </div>
+       <p class="text-sm text-[#94a3b8] mb-4">Full-stack e-commerce app with cart, payments, and admin dashboard.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">React</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Node.js</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">MongoDB</span>
+       </div><button onclick="showCode('ecommerce')" class="text-sm text-[#22d3ee] hover:underline flex items-center gap-1"><i data-lucide="code-2" class="w-4 h-4"></i>View Code</button>
+      </div>
+      <div class="card-hover bg-[#1e293b] rounded-xl p-6 border border-[#334155]">
+       <div class="flex items-center gap-2 mb-3"><i data-lucide="message-circle" class="w-5 h-5 text-[#22d3ee]"></i>
+        <h3 class="font-semibold">Chat Application</h3>
+       </div>
+       <p class="text-sm text-[#94a3b8] mb-4">Real-time messaging app with WebSocket, typing indicators, and file sharing.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">React</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Socket.io</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Express</span>
+       </div><button onclick="showCode('chat')" class="text-sm text-[#22d3ee] hover:underline flex items-center gap-1"><i data-lucide="code-2" class="w-4 h-4"></i>View Code</button>
+      </div>
+      <div class="card-hover bg-[#1e293b] rounded-xl p-6 border border-[#334155]">
+       <div class="flex items-center gap-2 mb-3"><i data-lucide="bar-chart-3" class="w-5 h-5 text-[#22d3ee]"></i>
+        <h3 class="font-semibold">Analytics Dashboard</h3>
+       </div>
+       <p class="text-sm text-[#94a3b8] mb-4">Data visualization dashboard with interactive charts and real-time updates.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Vue.js</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">D3.js</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Python</span>
+       </div><button onclick="showCode('analytics')" class="text-sm text-[#22d3ee] hover:underline flex items-center gap-1"><i data-lucide="code-2" class="w-4 h-4"></i>View Code</button>
+      </div>
+      <div class="card-hover bg-[#1e293b] rounded-xl p-6 border border-[#334155]">
+       <div class="flex items-center gap-2 mb-3"><i data-lucide="check-square" class="w-5 h-5 text-[#22d3ee]"></i>
+        <h3 class="font-semibold">Task Manager</h3>
+       </div>
+       <p class="text-sm text-[#94a3b8] mb-4">Kanban-style task manager with drag-and-drop, labels, and team collaboration.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Next.js</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Prisma</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">PostgreSQL</span>
+       </div><button onclick="showCode('taskmanager')" class="text-sm text-[#22d3ee] hover:underline flex items-center gap-1"><i data-lucide="code-2" class="w-4 h-4"></i>View Code</button>
+      </div>
+      <div class="card-hover bg-[#1e293b] rounded-xl p-6 border border-[#334155]">
+       <div class="flex items-center gap-2 mb-3"><i data-lucide="cloud" class="w-5 h-5 text-[#22d3ee]"></i>
+        <h3 class="font-semibold">Weather App</h3>
+       </div>
+       <p class="text-sm text-[#94a3b8] mb-4">Weather forecast app with geolocation, 7-day forecast, and animated icons.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">JavaScript</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">API</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">CSS</span>
+       </div><button onclick="showCode('weather')" class="text-sm text-[#22d3ee] hover:underline flex items-center gap-1"><i data-lucide="code-2" class="w-4 h-4"></i>View Code</button>
+      </div>
+      <div class="card-hover bg-[#1e293b] rounded-xl p-6 border border-[#334155]">
+       <div class="flex items-center gap-2 mb-3"><i data-lucide="lock" class="w-5 h-5 text-[#22d3ee]"></i>
+        <h3 class="font-semibold">Auth Microservice</h3>
+       </div>
+       <p class="text-sm text-[#94a3b8] mb-4">JWT-based authentication service with OAuth2, rate limiting, and refresh tokens.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Node.js</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Redis</span><span class="text-xs bg-[#0f172a] px-2 py-1 rounded">Docker</span>
+       </div><button onclick="showCode('auth')" class="text-sm text-[#22d3ee] hover:underline flex items-center gap-1"><i data-lucide="code-2" class="w-4 h-4"></i>View Code</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- CV Section -->
+   <section id="cv" class="section flex items-center">
+    <div class="max-w-4xl mx-auto w-full">
+     <h2 class="text-3xl font-bold mb-2">CV / Resume</h2>
+     <div class="w-16 h-1 bg-[#22d3ee] mb-8 rounded"></div>
+     <div class="bg-[#1e293b] rounded-xl p-8 border border-[#334155]">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+       <div>
+        <h3 class="text-2xl font-bold" id="cv-name">Ntivuguruzwa Douceur</h3>
+        <p class="text-[#94a3b8]">Full Stack Developer</p>
+       </div>
+       <div class="flex gap-3 mt-4 md:mt-0">
+        <button onclick="viewCV()" class="px-4 py-2 bg-[#334155] rounded-lg text-sm hover:bg-[#475569] transition flex items-center gap-2"><i data-lucide="eye" class="w-4 h-4"></i>View CV</button> <button onclick="downloadCV()" class="px-4 py-2 bg-[#22d3ee] text-[#0f172a] rounded-lg text-sm font-semibold hover:bg-[#06b6d4] transition flex items-center gap-2"><i data-lucide="download" class="w-4 h-4"></i>Download</button>
+       </div>
+      </div>
+      <div class="space-y-6">
+       <div>
+        <h4 class="font-semibold text-[#22d3ee] mb-3">Experience</h4>
+        <div class="space-y-4">
+         <div class="border-l-2 border-[#334155] pl-4">
+          <p class="font-medium">Senior Developer — TechCorp</p>
+          <p class="text-sm text-[#94a3b8]">2022 – Present</p>
+          <p class="text-sm text-[#94a3b8] mt-1">Led development of microservices architecture serving 1M+ users.</p>
+         </div>
+         <div class="border-l-2 border-[#334155] pl-4">
+          <p class="font-medium">Full Stack Developer — StartupXYZ</p>
+          <p class="text-sm text-[#94a3b8]">2020 – 2022</p>
+          <p class="text-sm text-[#94a3b8] mt-1">Built and maintained core platform features using React and Node.js.</p>
+         </div>
+         <div class="border-l-2 border-[#334155] pl-4">
+          <p class="font-medium">Junior Developer — WebAgency</p>
+          <p class="text-sm text-[#94a3b8]">2019 – 2020</p>
+          <p class="text-sm text-[#94a3b8] mt-1">Developed responsive websites and e-commerce solutions for clients.</p>
+         </div>
+        </div>
+       </div>
+       <div>
+        <h4 class="font-semibold text-[#22d3ee] mb-3">Education</h4>
+        <div class="border-l-2 border-[#334155] pl-4">
+         <p class="font-medium">BSc Computer Science</p>
+         <p class="text-sm text-[#94a3b8]">University of Technology — 2019</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact -->
+   <section id="contact" class="section flex items-center">
+    <div class="max-w-4xl mx-auto w-full">
+     <h2 class="text-3xl font-bold mb-2">Contact</h2>
+     <div class="w-16 h-1 bg-[#22d3ee] mb-8 rounded"></div>
+     <div class="grid md:grid-cols-2 gap-8">
+      <div>
+       <p class="text-[#94a3b8] mb-6">Have a project in mind or want to collaborate? Send me a message and I'll get back to you as soon as possible.</p>
+       <div class="space-y-4">
+        <div class="flex items-center gap-3"><i data-lucide="mail" class="w-5 h-5 text-[#22d3ee]"></i><span class="text-sm">john@example.com</span>
+        </div>
+        <div class="flex items-center gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-[#22d3ee]"></i><span class="text-sm">San Francisco, CA</span>
+        </div>
+        <div class="flex items-center gap-3"><i data-lucide="github" class="w-5 h-5 text-[#22d3ee]"></i><span class="text-sm">github.com/johndoe</span>
+        </div>
+       </div>
+      </div>
+      <form id="contact-form" class="space-y-4">
+       <div><label for="c-name" class="text-sm font-medium block mb-1">Name</label><input id="c-name" type="text" required class="w-full px-4 py-3 bg-[#0f172a] border border-[#334155] rounded-lg focus:border-[#22d3ee] focus:outline-none transition text-sm">
+       </div>
+       <div><label for="c-email" class="text-sm font-medium block mb-1">Email</label><input id="c-email" type="email" required class="w-full px-4 py-3 bg-[#0f172a] border border-[#334155] rounded-lg focus:border-[#22d3ee] focus:outline-none transition text-sm">
+       </div>
+       <div><label for="c-msg" class="text-sm font-medium block mb-1">Message</label><textarea id="c-msg" rows="4" required class="w-full px-4 py-3 bg-[#0f172a] border border-[#334155] rounded-lg focus:border-[#22d3ee] focus:outline-none transition text-sm resize-none"></textarea>
+       </div><button type="submit" id="send-btn" class="w-full py-3 bg-[#22d3ee] text-[#0f172a] font-semibold rounded-lg hover:bg-[#06b6d4] transition flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i><span>Send Message</span></button>
+      </form>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="text-center py-8 border-t border-[#1e293b] text-sm text-[#64748b]">
+    <p>© 2024 Ntivuguruzwa Douceur. All rights reserved.</p>
+   </footer>
+  </div><!-- Code Modal -->
+  <div id="code-modal" class="hidden fixed inset-0 z-[60] bg-black/70 flex items-center justify-center p-4" onclick="if(event.target===this)closeCode()">
+   <div class="cv-modal bg-[#1e293b] rounded-xl w-full max-w-3xl max-h-[80%] overflow-hidden flex flex-col border border-[#334155]">
+    <div class="flex items-center justify-between p-4 border-b border-[#334155]">
+     <h3 id="code-title" class="font-semibold"></h3><button onclick="closeCode()" class="text-[#94a3b8] hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+    <div class="overflow-auto p-4">
+     <pre class="mono text-sm text-[#94a3b8] whitespace-pre-wrap"><code id="code-content"></code></pre>
+    </div>
+   </div>
+  </div><!-- CV Modal -->
+  <div id="cv-modal" class="hidden fixed inset-0 z-[60] bg-black/70 flex items-center justify-center p-4" onclick="if(event.target===this)closeCVModal()">
+   <div class="cv-modal bg-white text-[#1e293b] rounded-xl w-full max-w-2xl max-h-[85%] overflow-auto">
+    <div class="p-8" id="cv-content">
+     <div class="text-center mb-6 border-b pb-6">
+      <h2 class="text-3xl font-bold text-[#0f172a]">Ntivuguruzwa Douceur</h2>
+      <p class="text-[#64748b]">Full Stack Developer</p>
+      <p class="text-sm text-[#94a3b8] mt-2">john@example.com • San Francisco, CA • github.com/johndoe</p>
+     </div>
+     <div class="mb-6">
+      <h3 class="text-lg font-bold text-[#0f172a] border-b pb-1 mb-3">Professional Summary</h3>
+      <p class="text-sm text-[#475569]">Experienced full stack developer with 5+ years building scalable web applications. Proficient in React, Node.js, Python, and cloud technologies. Passionate about clean code and user-centric design.</p>
+     </div>
+     <div class="mb-6">
+      <h3 class="text-lg font-bold text-[#0f172a] border-b pb-1 mb-3">Experience</h3>
+      <div class="mb-4">
+       <p class="font-semibold">Senior Developer — TechCorp <span class="font-normal text-sm text-[#94a3b8]">(2022–Present)</span></p>
+       <ul class="text-sm text-[#475569] list-disc ml-5 mt-1 space-y-1">
+        <li>Led development of microservices architecture serving 1M+ users</li>
+        <li>Reduced API response times by 40% through optimization</li>
+        <li>Mentored team of 4 junior developers</li>
+       </ul>
+      </div>
+      <div class="mb-4">
+       <p class="font-semibold">Full Stack Developer — StartupXYZ <span class="font-normal text-sm text-[#94a3b8]">(2020–2022)</span></p>
+       <ul class="text-sm text-[#475569] list-disc ml-5 mt-1 space-y-1">
+        <li>Built core platform features using React and Node.js</li>
+        <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
+       </ul>
+      </div>
+      <div>
+       <p class="font-semibold">Junior Developer — WebAgency <span class="font-normal text-sm text-[#94a3b8]">(2019–2020)</span></p>
+       <ul class="text-sm text-[#475569] list-disc ml-5 mt-1 space-y-1">
+        <li>Developed responsive websites for 20+ clients</li>
+        <li>Built e-commerce solutions increasing client revenue by 25%</li>
+       </ul>
+      </div>
+     </div>
+     <div class="mb-6">
+      <h3 class="text-lg font-bold text-[#0f172a] border-b pb-1 mb-3">Education</h3>
+      <p class="font-semibold">BSc Computer Science — University of Technology <span class="font-normal text-sm text-[#94a3b8]">(2019)</span></p>
+     </div>
+     <div>
+      <h3 class="text-lg font-bold text-[#0f172a] border-b pb-1 mb-3">Skills</h3>
+      <p class="text-sm text-[#475569]">JavaScript, TypeScript, React, Next.js, Vue.js, Node.js, Python, PostgreSQL, MongoDB, Redis, Docker, AWS, Git, REST APIs, GraphQL</p>
+     </div>
+    </div>
+    <div class="flex justify-end gap-3 p-4 border-t"><button onclick="closeCVModal()" class="px-4 py-2 text-sm text-[#64748b] hover:text-[#0f172a]">Close</button><button onclick="downloadCV()" class="px-4 py-2 bg-[#22d3ee] text-[#0f172a] rounded-lg text-sm font-semibold hover:bg-[#06b6d4]">Download</button>
+    </div>
+   </div>
+  </div><!-- Toast -->
+  <div id="toast" class="hidden fixed bottom-6 right-6 z-[70] bg-[#22d3ee] text-[#0f172a] px-6 py-3 rounded-lg font-semibold text-sm toast shadow-lg"></div>
+  <script>
+    // Project code snippets
+    const projectCodes = {
+      ecommerce: { title: 'E-Commerce Platform', code: `// server.js - Express Backend
+const express = require('express');
+const stripe = require('stripe')(process.env.STRIPE_KEY);
+
+app.post('/api/checkout', async (req, res) => {
+  const { items, customer } = req.body;
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: items.map(item => ({
+      price_data: {
+        currency: 'usd',
+        product_data: { name: item.name },
+        unit_amount: item.price * 100,
+      },
+      quantity: item.quantity,
+    })),
+    mode: 'payment',
+    success_url: '/success',
+  });
+  res.json({ sessionId: session.id });
+});
+
+// Cart Component (React)
+function Cart({ items, onCheckout }) {
+  const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+  return (
+    <div className="cart">
+      {items.map(item => (
+        <CartItem key={item.id} item={item} />
+      ))}
+      <button onClick={() => onCheckout(items)}>
+        Pay \${total.toFixed(2)}
+      </button>
+    </div>
+  );
+}` },
+      chat: { title: 'Chat Application', code: `// socket server
+const io = require('socket.io')(server, { cors: { origin: '*' } });
+
+io.on('connection', (socket) => {
+  socket.on('join-room', (roomId, userId) => {
+    socket.join(roomId);
+    socket.to(roomId).emit('user-connected', userId);
+  });
+
+  socket.on('send-message', ({ roomId, message, userId }) => {
+    io.to(roomId).emit('new-message', {
+      id: generateId(),
+      text: message,
+      userId,
+      timestamp: Date.now(),
+    });
+  });
+
+  socket.on('typing', ({ roomId, userId }) => {
+    socket.to(roomId).emit('user-typing', userId);
+  });
+});
+
+// React Chat Hook
+function useChat(roomId) {
+  const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    socket.emit('join-room', roomId, currentUser.id);
+    socket.on('new-message', (msg) => {
+      setMessages(prev => [...prev, msg]);
+    });
+    return () => socket.off('new-message');
+  }, [roomId]);
+  return { messages, sendMessage };
+}` },
+      analytics: { title: 'Analytics Dashboard', code: `// Dashboard with D3.js Charts
+import * as d3 from 'd3';
+
+function renderLineChart(data, selector) {
+  const svg = d3.select(selector)
+    .append('svg')
+    .attr('viewBox', '0 0 800 400');
+
+  const x = d3.scaleTime()
+    .domain(d3.extent(data, d => d.date))
+    .range([60, 740]);
+
+  const y = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.value)])
+    .range([350, 20]);
+
+  const line = d3.line()
+    .x(d => x(d.date))
+    .y(d => y(d.value))
+    .curve(d3.curveMonotoneX);
+
+  svg.append('path')
+    .datum(data)
+    .attr('d', line)
+    .attr('fill', 'none')
+    .attr('stroke', '#22d3ee')
+    .attr('stroke-width', 2);
+}
+
+// Python data API
+@app.get("/api/analytics")
+async def get_analytics(timeframe: str):
+    query = build_query(timeframe)
+    results = await db.fetch_all(query)
+    return {"data": aggregate(results)}` },
+      taskmanager: { title: 'Task Manager', code: `// Prisma Schema
+model Task {
+  id        String   @id @default(cuid())
+  title     String
+  status    Status   @default(TODO)
+  priority  Priority @default(MEDIUM)
+  assignee  User?    @relation(fields: [userId])
+  createdAt DateTime @default(now())
+}
+
+enum Status { TODO, IN_PROGRESS, DONE }
+
+// Next.js API Route
+export async function PATCH(req, { params }) {
+  const { status, position } = await req.json();
+  const task = await prisma.task.update({
+    where: { id: params.id },
+    data: { status, position },
+  });
+  // Reorder tasks in column
+  await reorderColumn(status, position);
+  return Response.json(task);
+}
+
+// Drag handler (React DnD)
+function onDragEnd(result) {
+  const { draggableId, destination } = result;
+  if (!destination) return;
+  moveTask(draggableId, {
+    status: destination.droppableId,
+    position: destination.index,
+  });
+}` },
+      weather: { title: 'Weather App', code: `// Weather API integration
+async function getWeather(lat, lon) {
+  const res = await fetch(
+    \`https://api.openweathermap.org/data/2.5/forecast?
+     lat=\${lat}&lon=\${lon}&units=metric&appid=\${API_KEY}\`
+  );
+  const data = await res.json();
+  return {
+    current: {
+      temp: Math.round(data.list[0].main.temp),
+      condition: data.list[0].weather[0].main,
+      icon: data.list[0].weather[0].icon,
+      humidity: data.list[0].main.humidity,
+      wind: data.list[0].wind.speed,
+    },
+    forecast: data.list
+      .filter((_, i) => i % 8 === 0)
+      .slice(0, 7)
+      .map(day => ({
+        date: new Date(day.dt * 1000),
+        high: Math.round(day.main.temp_max),
+        low: Math.round(day.main.temp_min),
+        icon: day.weather[0].icon,
+      })),
+  };
+}
+
+// Geolocation
+navigator.geolocation.getCurrentPosition(
+  (pos) => getWeather(pos.coords.latitude, pos.coords.longitude),
+  () => getWeather(37.77, -122.42) // fallback SF
+);` },
+      auth: { title: 'Auth Microservice', code: `// JWT Authentication Service
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const redis = require('./redis');
+
+async function login(email, password) {
+  const user = await User.findByEmail(email);
+  if (!user) throw new AuthError('Invalid credentials');
+
+  // Rate limiting check
+  const attempts = await redis.get(\`login:\${email}\`);
+  if (attempts >= 5) throw new AuthError('Too many attempts');
+
+  const valid = await bcrypt.compare(password, user.hash);
+  if (!valid) {
+    await redis.incr(\`login:\${email}\`);
+    await redis.expire(\`login:\${email}\`, 900);
+    throw new AuthError('Invalid credentials');
+  }
+
+  const accessToken = jwt.sign(
+    { sub: user.id, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: '15m' }
+  );
+
+  const refreshToken = jwt.sign(
+    { sub: user.id },
+    process.env.REFRESH_SECRET,
+    { expiresIn: '7d' }
+  );
+
+  await redis.set(\`refresh:\${user.id}\`, refreshToken, 'EX', 604800);
+  return { accessToken, refreshToken };
+}
+
+// Middleware
+function authenticate(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1];
+  const payload = jwt.verify(token, process.env.JWT_SECRET);
+  req.user = payload;
+  next();
+}` }
+    };
+
+    function showCode(key) {
+      const p = projectCodes[key];
+      document.getElementById('code-title').textContent = p.title;
+      document.getElementById('code-content').textContent = p.code;
+      document.getElementById('code-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+    function closeCode() { document.getElementById('code-modal').classList.add('hidden'); }
+
+    function viewCV() { document.getElementById('cv-modal').classList.remove('hidden'); }
+    function closeCVModal() { document.getElementById('cv-modal').classList.add('hidden'); }
+
+    function downloadCV() {
+      const cvText = `Ntivuguruzwa Douceur
+Full Stack Developer
+john@example.com | San Francisco, CA | github.com/johndoe
+
+PROFESSIONAL SUMMARY
+Experienced full stack developer with 5+ years building scalable web applications. Proficient in React, Node.js, Python, and cloud technologies.
+
+EXPERIENCE
+Senior Developer — TechCorp (2022–Present)
+• Led development of microservices architecture serving 1M+ users
+• Reduced API response times by 40% through optimization
+• Mentored team of 4 junior developers
+
+Full Stack Developer — StartupXYZ (2020–2022)
+• Built core platform features using React and Node.js
+• Implemented CI/CD pipelines reducing deployment time by 60%
+
+Junior Developer — WebAgency (2019–2020)
+• Developed responsive websites for 20+ clients
+• Built e-commerce solutions increasing client revenue by 25%
+
+EDUCATION
+BSc Computer Science — University of Technology (2019)
+
+SKILLS
+JavaScript, TypeScript, React, Next.js, Vue.js, Node.js, Python, PostgreSQL, MongoDB, Redis, Docker, AWS, Git, REST APIs, GraphQL`;
+
+      const blob = new Blob([cvText], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'John_Doe_CV.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('CV downloaded!');
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 3000);
+    }
+
+    // Mobile menu
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Contact form with Data SDK
+    const dataHandler = { onDataChanged(data) {} };
+
+    async function initApp() {
+      const result = await window.dataSdk.init(dataHandler);
+      if (!result.isOk) console.error('Data SDK init failed');
+    }
+    initApp();
+
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('send-btn');
+      btn.innerHTML = '<span class="animate-pulse">Sending...</span>';
+      btn.disabled = true;
+
+      const record = {
+        name: document.getElementById('c-name').value,
+        email: document.getElementById('c-email').value,
+        message: document.getElementById('c-msg').value,
+        sent_at: new Date().toISOString()
+      };
+
+      const result = await window.dataSdk.create(record);
+      if (result.isOk) {
+        showToast('Message sent successfully!');
+        e.target.reset();
+      } else {
+        showToast('Failed to send. Please try again.');
+      }
+      btn.innerHTML = '<i data-lucide="send" class="w-4 h-4"></i><span>Send Message</span>';
+      btn.disabled = false;
+      lucide.createIcons();
+    });
+
+    // Element SDK
+    const appConfig = {
+      hero_name: 'Ntivuguruzwa Douceur',
+      hero_title: 'Full Stack Developer',
+      about_text: "I'm a passionate full stack developer with 5+ years of experience building web applications. I love creating elegant solutions to complex problems and am always eager to learn new technologies.",
+      background_color: '#0f172a',
+      surface_color: '#1e293b',
+      text_color: '#e2e8f0',
+      accent_color: '#22d3ee',
+      muted_color: '#94a3b8',
+      font_family: 'Outfit',
+      font_size: 16
+    };
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig: appConfig,
+        onConfigChange: async (config) => {
+          document.getElementById('hero-name').textContent = config.hero_name || appConfig.hero_name;
+          document.getElementById('hero-title').textContent = config.hero_title || appConfig.hero_title;
+          document.getElementById('about-text').textContent = config.about_text || appConfig.about_text;
+          document.getElementById('cv-name').textContent = config.hero_name || appConfig.hero_name;
+          const initials = (config.hero_name || appConfig.hero_name).split(' ').map(w=>w[0]).join('');
+          document.getElementById('nav-name').textContent = initials;
+
+          const bgColor = config.background_color || appConfig.background_color;
+          const surfaceColor = config.surface_color || appConfig.surface_color;
+          const textColor = config.text_color || appConfig.text_color;
+          const accentColor = config.accent_color || appConfig.accent_color;
+          const font = (config.font_family || appConfig.font_family) + ', sans-serif';
+
+          document.body.style.backgroundColor = bgColor;
+          document.body.style.color = textColor;
+          document.body.style.fontFamily = font;
+
+          // Update all accent elements
+          document.querySelectorAll('[data-accent]').forEach(el => {
+            el.style.color = accentColor;
+          });
+          document.querySelectorAll('[data-accent-bg]').forEach(el => {
+            el.style.backgroundColor = accentColor;
+          });
+          document.querySelectorAll('[data-surface]').forEach(el => {
+            el.style.backgroundColor = surfaceColor;
+          });
+        },
+        mapToCapabilities: (config) => {
+          return {
+            recolorables: [
+              { get: () => config.background_color || appConfig.background_color, set: (v) => { window.elementSdk.setConfig({ background_color: v }); } },
+              { get: () => config.surface_color || appConfig.surface_color, set: (v) => { window.elementSdk.setConfig({ surface_color: v }); } },
+              { get: () => config.text_color || appConfig.text_color, set: (v) => { window.elementSdk.setConfig({ text_color: v }); } },
+              { get: () => config.accent_color || appConfig.accent_color, set: (v) => { window.elementSdk.setConfig({ accent_color: v }); } },
+              { get: () => config.muted_color || appConfig.muted_color, set: (v) => { window.elementSdk.setConfig({ muted_color: v }); } },
+            ],
+            borderables: [],
+            fontEditable: { get: () => config.font_family || appConfig.font_family, set: (v) => { window.elementSdk.setConfig({ font_family: v }); } },
+            fontSizeable: { get: () => config.font_size || appConfig.font_size, set: (v) => { window.elementSdk.setConfig({ font_size: v }); } },
+          };
+        },
+        mapToEditPanelValues: (config) => {
+          return new Map([
+            ['hero_name', config.hero_name || appConfig.hero_name],
+            ['hero_title', config.hero_title || appConfig.hero_title],
+            ['about_text', config.about_text || appConfig.about_text],
+          ]);
+        }
+      });
+    }
+
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f76cf5361ceb257',t:'MTc3ODA1ODE4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
